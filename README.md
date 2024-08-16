@@ -1,27 +1,9 @@
-# SpeakersApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.
+# Speakers Feature  (*CP*)
 
-## Development server
+This repository will implement the first of two proposed solutions for building a scalable, enterprise-sized Angular application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+ - [x] **Conservative Proposal (*CP*)**: Utilizing traditional Angular modules  
+ - [ ] **Modern Proposal (*MP*)**: Leveraging standalone components and signals
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> Architecture for ***CP*** will be based on a blend of best practices from **Angular for Enterprise Applications** - *Third Edition: Build scalable Angular apps using the minimalist Router-first architecture* and additional proven approaches from previous projects. These include methodologies such as the **View Layer with Smart & Dumb Components pattern**, which has been demonstrated to be both suitable and beneficial for large-scale Angular applications.
