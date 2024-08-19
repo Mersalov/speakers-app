@@ -5,5 +5,7 @@ export interface Speaker {
   email: string;
   phone: string;
   pictureUrl: string;
+  country: string;
+  countryCode: string;
   address: string;
 }

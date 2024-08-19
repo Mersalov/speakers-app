@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SpeakersListComponent } from './components/speakers-list/speakers-list.component';
+import { SpeakerDetailsContainerComponent, SpeakersListContainerComponent } from './components/containers';
 
 const routes: Routes = [
-  { path: '', component: SpeakersListComponent }
+  { path: '', component: SpeakersListContainerComponent },
+  { path: ':id', component: SpeakerDetailsContainerComponent }
 ];
 
 @NgModule({

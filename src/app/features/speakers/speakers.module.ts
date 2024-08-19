@@ -1,22 +1,28 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { SpeakersRoutingModule } from './speakers-routing.module';
-import { SpeakersListPresentationComponent } from './components/speakers-list-presentation/speakers-list-presentation.component';
-import { SpeakersListComponent } from './components/speakers-list/speakers-list.component';
-import { SpeakerDetailsPresentationComponent } from './components/speaker-details-presentation/speaker-details-presentation.component';
-import { SpeakerDetailsComponent } from './components/speaker-details/speaker-details.component';
-import { SharedModule } from '../../shared/shared.module';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { SharedModule } from '../../shared/shared.module';
+import {
+  SpeakerDetailsContainerComponent,
+  SpeakersListContainerComponent,
+} from './components/containers';
+import {
+  SpeakerDetailsComponent,
+  SpeakersListComponent,
+  SpeakersListSearchComponent,
+} from './components/presentational';
+import { SpeakersRoutingModule } from './speakers-routing.module';
 import { SpeakersEffects } from './store/speakers.effects';
 import { speakersReducer } from './store/speakers.reducer';
 
 @NgModule({
   declarations: [
-    SpeakersListPresentationComponent,
+    SpeakersListContainerComponent,
+    SpeakerDetailsContainerComponent,
     SpeakersListComponent,
-    SpeakerDetailsPresentationComponent,
+    SpeakersListSearchComponent,
     SpeakerDetailsComponent,
   ],
   imports: [
@@ -24,7 +30,7 @@ import { speakersReducer } from './store/speakers.reducer';
     SpeakersRoutingModule,
     SharedModule,
     StoreModule.forFeature('speakers', speakersReducer),
-    // EffectsModule.forFeature([SpeakersEffects]),
+    EffectsModule.forFeature([SpeakersEffects]),
   ],
 })
 export class SpeakersModule {}

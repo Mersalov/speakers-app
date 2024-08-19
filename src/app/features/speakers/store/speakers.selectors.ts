@@ -1,6 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { SpeakersState } from './speakers.reducer';
-import { Speaker } from '../models/Speaker';
 
 export const selectSpeakersState =
   createFeatureSelector<SpeakersState>('speakers');
@@ -20,7 +19,7 @@ export const selectSpeakersError = createSelector(
   (state: SpeakersState) => state.error
 );
 
-export const selectSpeakerById = (id: string) =>
-  createSelector(selectAllSpeakers, (speakers: Speaker[]) =>
-    speakers.find((speaker) => speaker.id === id)
-  );
+export const selectSelectedSpeaker = createSelector(
+  selectSpeakersState,
+  (state: SpeakersState) => state.selectedSpeaker
+);
