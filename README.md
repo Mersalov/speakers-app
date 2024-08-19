@@ -1,27 +1,151 @@
-# SpeakersApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.
+# Speakers Feature  (*CP*)
+---
+This repository will implement the first of two proposed solutions for building a scalable, enterprise-sized Angular application
 
-## Development server
+ - [x] **Conservative Proposal (*CP*)**: Utilizing traditional Angular modules  
+ - [ ] **Modern Proposal (*MP*)**: Leveraging standalone components and signals
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> Architecture for ***CP*** will be based on a blend of best practices from **Angular for Enterprise Applications** - *Third Edition: Build scalable Angular apps using the minimalist Router-first architecture* and additional proven approaches from previous projects. These include methodologies such as the **View Layer with Smart & Dumb Components pattern**, which has been demonstrated to be both suitable and beneficial for large-scale Angular applications.
 
-## Code scaffolding
+&nbsp;
+## Libs and tools
+---
+Bellow will be listed and described most used libs and tools for implementing current project. Latest documentation were revisited and recommendation and instructions will be provided in relation with current code.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Library  | Documentation
+------------- | ------------
+Git Flow  | <https://skoch.github.io/Git-Workflow/>
+Commitizen  | <https://commitizen-tools.github.io/commitizen/>
+Angular CLI | <https://angular.dev/tools/cli>
+PrimeNG | <https://primeng.org/installation>
+PrimeIcons | <https://primeng.org/icons>
+NgRx | <https://ngrx.io/docs>
+&nbsp;
+## Development Process
+---
+This section provides detailed explanations and instructions for implementing and using libraries to manage branches, commits, and to scaffold modules, components, and services, in the same manner as it was done in the current project.
+&nbsp;
+#### Installation and Usage
+**Git Flow**
+```sh
+brew install git-flow
+```
+```sh
+git flow init [-d]
+Which branch should be used for bringing forth production releases?
+   - develop
+   - main
+Branch name for production releases: [main]
 
-## Build
+Which branch should be used for integration of the "next release"?
+   - develop
+Branch name for "next release" development: [develop]
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+How to name your supporting branch prefixes?
+Feature branches? [feature/]
+Release branches? [release/]
+Hotfix branches? [hotfix/]
+Support branches? [support/]
+Version tag prefix? []
+```
+```sh
+$ git flow feature start my-feature
+Switched to a new branch 'feature/my-feature'
 
-## Running unit tests
+Summary of actions:
+- A new branch 'feature/my-feature' was created, based on 'develop'
+- You are now on branch 'feature/my-feature'
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Now, start committing on your feature. When done, use:
 
-## Running end-to-end tests
+     git flow feature finish my-feature
+```
+&nbsp;
+**Angular CLI**
+```sh
+npm install -g @angular/cli
+```
+&nbsp;
+**Create and initialize a new Angular app**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```sh
+ng new speakers-app --style=scss --ssr=false --standalone=false
+```
 
-## Further help
+> Note: `--standalone=false` is added to provide module centric schematics.
+> Loks like routing is **used by default** even if not described in docs `--routing` .
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+&nbsp;
+**Install and use Commitizen**
+```sh
+npm install -g commitizen
+```
+![Alt Text](https://commitizen-tools.github.io/commitizen/images/demo.gif)
+&nbsp;
+**PrimeNG & PrimeIcons**
+```sh
+npm install primeng primeicons
+```
+Theme and Core styles are the necessary css files of the components. Styles can either be imported at angular.json or src/styles.css file.
+`angular.json`
+```json
+"styles": [
+    "src/styles.scss",
+    "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+    "node_modules/primeng/resources/primeng.min.css",
+    "node_modules/primeicons/primeicons.css"
+],
+```
+&nbsp;
+**NgRx**
+```sh
+npm install @ngrx/store @ngrx/effects @ngrx/store-devtools @ngrx/entity
+```
+Add to imports in `app.module.ts`
+```typescript
+imports: [
+    StoreModule.forRoot(),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+],
+```
+&nbsp;
+#### Generate Modules, Components and Services
+&nbsp;
+**Core Module**
+```sh
+ng generate module core
+```
+&nbsp;
+**Logger Service**
+```sh
+ng generate service core/services/logger
+```
+&nbsp;
+**Shared Module**
+```sh
+ng generate module shared
+```
+&nbsp;
+**Primeng Module**
+```sh
+ng generate module shared/prime-ng
+```
+&nbsp;
+**Speakers Module with `Routing`**
+```sh
+ng generate module features/speakers --routing
+```
+&nbsp;
+**Speaker Interface**
+```sh
+ng generate interface features/speakers/models/speaker
+```
+&nbsp;
+**Infrastructure Module**
+```sh
+ng generate module infrastructure
+```
+
+

@@ -1,0 +1,10 @@
+<div class="speaker-details-container">
+  <ng-container *ngIf="speaker$ | async as speaker; else loading">
+    <app-speaker-details 
+      [speaker]="speaker" 
+      (back)="onBack()"/>
+  </ng-container>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>

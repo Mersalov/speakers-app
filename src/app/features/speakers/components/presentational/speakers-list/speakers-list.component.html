@@ -1,0 +1,82 @@
+<p-table
+  #speakersListTable
+  [value]="speakers"
+  dataKey="id"
+  [rows]="5"
+  selectionMode="single"
+  (onRowSelect)="selectSpeaker.emit($event.data)"
+  [rowsPerPageOptions]="[5, 10, 15, 20]"
+  [loading]="loading"
+  [paginator]="true"
+  [globalFilterFields]="['name', 'country', 'email']"
+  [tableStyle]="{ 'min-width': '75rem' }"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Email</th>
+    </tr>
+    <tr>
+      <th>
+        <p-columnFilter
+          type="text"
+          field="name"
+          placeholder="Search by name"
+          ariaLabel="Filter Name"
+        />
+      </th>
+      <th>
+        <p-columnFilter
+          type="text"
+          field="country"
+          placeholder="Search by country"
+          ariaLabel="Filter Country"
+        />
+      </th>
+      <th>
+        <p-columnFilter
+          type="text"
+          field="email"
+          placeholder="Search by email"
+          ariaLabel="Filter Email"
+        />
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-speaker>
+    <tr [pSelectableRow]="speaker">
+      <td>
+        <img
+          [alt]="speaker.name"
+          class="speaker-avatar"
+          [src]="speaker.pictureUrl"
+          width="32"
+          style="vertical-align: middle"
+        />
+        <span class="ml-1 vertical-align-middle">
+          {{ speaker.name }}
+        </span>
+      </td>
+      <td>
+        <img
+          src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+          [class]="'flag flag-' + speaker.countryCode"
+          style="width: 20px"
+        />
+        <span class="ml-1 vertical-align-middle">
+          {{ speaker.country }}
+        </span>
+      </td>
+      <td>
+        {{ speaker.email }}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="5">No speakers found.</td>
+    </tr>
+  </ng-template>
+</p-table>

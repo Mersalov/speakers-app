@@ -1,0 +1,13 @@
+<p-card header="Speaker Details">
+    <h3>{{ speaker.name }}</h3>
+    <img [src]="speaker.pictureUrl" alt="Picture of {{ speaker.name }}" style="max-width: 100px; border-radius: 50%;" />
+    <p><strong>Email:</strong> {{ speaker.email }}</p>
+    <p><strong>Country:</strong> {{ speaker.country }}</p>
+    <p><strong>Address:</strong> {{ speaker.address }}</p>
+    <ng-template pTemplate="footer">
+      <div class="details-footer">
+        <p-button label="Back" (click)="onBack()"></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+  

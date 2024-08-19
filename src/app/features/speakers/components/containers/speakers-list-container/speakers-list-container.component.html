@@ -1,0 +1,16 @@
+<div class="speakers-container">
+  <app-speakers-list-search (searchText)="applySearch($event)" />
+
+  <ng-container *ngIf="(speakers$ | async) as speakers">
+    <app-speakers-list
+      [speakers]="speakers"
+      [loading]="(loading$ | async) || false"
+      (selectSpeaker)="onSelectSpeaker($event)"
+      [searchText]="searchText"
+    />
+  </ng-container>
+
+  <div *ngIf="error$ | async as error">
+    <p>Error: {{ error }}</p>
+  </div>
+</div>
