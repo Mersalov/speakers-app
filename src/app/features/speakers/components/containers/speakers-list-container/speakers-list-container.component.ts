@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../../../core/state/app.reducer';
@@ -20,6 +20,7 @@ import {
   selector: 'app-speakers-list-container',
   templateUrl: './speakers-list-container.component.html',
   styleUrl: './speakers-list-container.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpeakersListContainerComponent {
   speakers$!: Observable<Speaker[]>;

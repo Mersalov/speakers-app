@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -6,6 +6,7 @@ import { debounceTime } from 'rxjs/operators';
   selector: 'app-speakers-list-search',
   templateUrl: './speakers-list-search.component.html',
   styleUrl: './speakers-list-search.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpeakersListSearchComponent {
   @Output() searchText = new EventEmitter<string>();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../../../core/state/app.reducer';
@@ -10,6 +10,7 @@ import { selectSelectedSpeaker } from '../../../store/speakers.selectors';
   selector: 'app-speaker-details-container',
   templateUrl: './speaker-details-container.component.html',
   styleUrl: './speaker-details-container.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpeakerDetailsContainerComponent implements OnInit {
   speaker$!: Observable<Speaker | null>;

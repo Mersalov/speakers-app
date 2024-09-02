@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Speaker } from '../../../models/Speaker';
 
 @Component({
   selector: 'app-speaker-details',
   templateUrl: './speaker-details.component.html',
   styleUrl: './speaker-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpeakerDetailsComponent {
   @Input() speaker!: Speaker;
